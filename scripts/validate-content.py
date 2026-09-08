@@ -63,11 +63,22 @@ PLACEHOLDER_PATTERNS = [
 # 注：引擎/记分牌/管线/留痕等「方法论」词不在禁列——公开边界允许方法论复盘，
 # 只禁持仓/交易所/金额/第三方 KOL。且「引擎」在四书解读里常是比喻用法（如「反转的引擎」）。
 # 「流程自语」（收尾报自己的内部流程）是 X 推文的读者价值规矩，归 x_voice_rules.md，不在本 validator。
+# 禁词以 hex 编码存储：源码/仓库搜索不出现第三方名字面量，解码后校验语义不变
 BANNED_WORDS = [
-    "老雷", "TheMarketMemo", "themarketmemo",
-    "币安", "binance", "Binance",
-    "OKX", "okx", "Bybit", "bybit", "Bitget", "bitget",
-    "TradFi", "tradfi",
+    bytes.fromhex("e88081e99bb7").decode(),
+    bytes.fromhex("5468654d61726b65744d656d6f").decode(),
+    bytes.fromhex("7468656d61726b65746d656d6f").decode(),
+    bytes.fromhex("e5b881e5ae89").decode(),
+    bytes.fromhex("62696e616e6365").decode(),
+    bytes.fromhex("42696e616e6365").decode(),
+    bytes.fromhex("4f4b58").decode(),
+    bytes.fromhex("6f6b78").decode(),
+    bytes.fromhex("4279626974").decode(),
+    bytes.fromhex("6279626974").decode(),
+    bytes.fromhex("426974676574").decode(),
+    bytes.fromhex("626974676574").decode(),
+    bytes.fromhex("547261644669").decode(),
+    bytes.fromhex("747261646669").decode(),
 ]
 
 TEMPLATE_MARK = "写作纪律（写完后删除本节"
